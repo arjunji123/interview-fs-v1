@@ -53,7 +53,6 @@ frontend-mui/
 │   ├── components/       → Reusable components (e.g., Sidebar, Header, FormFields)
 │   ├── pages/            → Page-level components (Dashboard, UserList, AddUser, EditUser)
 │   ├── routes/           → Route definitions using React Router
-│   ├── services/         → API handling and endpoint logic
 │   ├── types/            → TypeScript models and interfaces
 │   ├── App.tsx          → Main App component with routing
 │   └── main.tsx         → React root renderer
