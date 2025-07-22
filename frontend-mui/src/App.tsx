@@ -1,44 +1,27 @@
-import { useState } from 'react';
-import { Button, Typography, Box } from '@mui/material';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
+import UserList from './pages/users/UserList';
+import AddUser from './pages/users/AddUser';
+import EditUser from './pages/users/EditUser';
+import CalendarPage from './pages/CalendarPage';
 
 function App() {
-  const [message, setMessage] = useState('');
-
-  const fetchMessage = async () => {
-    const res = await fetch('/api/message');
-    const text = await res.text();
-    setMessage(text);
-  };
-
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        gap: 2,
-      }}
-    >
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={fetchMessage}
-        size="large"
-      >
-        Get Welcome Message
-      </Button>
-      {message && (
-        <Typography
-          variant="h5"
-          component="div"
-          sx={{ fontWeight: 'bold', textAlign: 'center' }}
-        >
-          {message}
-        </Typography>
-      )}
-    </Box>
+    <BrowserRouter>
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1 bg-gray-100 min-h-screen">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/users" element={<UserList />} />
+            <Route path="/users/add" element={<AddUser />} />
+            <Route path="/users/edit/:id" element={<EditUser />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
